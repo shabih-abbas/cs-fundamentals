@@ -8,7 +8,13 @@
 **/
 
 // You need to include some header(s) here!
+#include <iostream>
 
+int main(){
+    std::cout << "Hello, world!" << std::endl;
+    std::cout << "Greetings from Illinois!" << std::endl;
+    return 0;
+}
 
 // You need to define your main() function here!
 
