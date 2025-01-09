@@ -67,12 +67,12 @@ PNG grayscale(PNG image) {
  * @return The image with a spotlight.
  */
 PNG createSpotlight(PNG image, int centerX, int centerY) {
-    for(unsigned x=0; x< image.width(); x++){
-      for(unsigned y=0; y< image.height(); y++){
+    for(int x=0; x< image.width(); x++){
+      for(int y=0; y< image.height(); y++){
         HSLAPixel & pixel= image.getPixel(x,y);
         double distance= std::sqrt(std::pow(centerX-x,2) + std::pow(centerY-y,2));
-        double percentD= (distance*0.5)/100;
-        pixel.l-=pixel.l*((percentD<0.8)? percentD : 0.8);
+        double percentD= (distance*0.5)/100.0;
+        pixel.l-=pixel.l * ((percentD<0.8)? percentD : 0.8);
       }
     }
   return image;
