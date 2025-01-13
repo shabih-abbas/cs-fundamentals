@@ -81,7 +81,7 @@
 template <typename T>
 void LinkedList<T>::insertOrdered(const T& newData) {
 
-  const *Node newNode= new Node(newData);
+  Node* newNode= new Node(newData);
   
   if(!head_){
     head_=newNode;
@@ -99,12 +99,13 @@ void LinkedList<T>::insertOrdered(const T& newData) {
       tail_=newNode;
     }
     else{
-      const *Node frontptr= head_;
-      const *Node backptr= tail_;
+      Node* frontptr= head_;
+      Node* backptr= tail_;
       while(frontptr && backptr){
         if(newNode->data <= frontptr->data){
           newNode->next=frontptr;
           newNode->prev=frontptr->prev;
+          frontptr->prev->next=newNode;
           frontptr->prev=newNode;
           size_++;
           return;         
@@ -112,6 +113,7 @@ void LinkedList<T>::insertOrdered(const T& newData) {
         if(newNode->data >= backptr->data){
           newNode->prev= backptr;
           newNode->next= backptr->next;
+          backptr->next->prev=newNode;
           backptr->next= newNode;
           size_++;
           return;         
@@ -120,10 +122,12 @@ void LinkedList<T>::insertOrdered(const T& newData) {
         backptr= backptr->prev;
 
         }
-      throw std::runtime_error() 
+      std::cout<<"throwing."<<std::endl;
+      //throw std::runtime_error("Error in InsertOrdered, Empty node in the list");
       }
     }
-    
+    size_++;
+    return;
   }
   
   // -----------------------------------------------------------
@@ -173,7 +177,7 @@ void LinkedList<T>::insertOrdered(const T& newData) {
   // to update all next, prev, head_, and tail_ pointers as needed on your
   // new node or on those existing nodes that are adjacent to the new node.
 
-}
+
 
 /********************************************************************
   Exercise 2: Linear-time Merge
@@ -267,7 +271,29 @@ LinkedList<T> LinkedList<T>::merge(const LinkedList<T>& other) const {
   // the final result we want. This is what we will return at the end of
   // the function.
   LinkedList<T> merged;
-
+  while(!left.empty() || !right.empty()){
+    if(!right.empty() && !left.empty()){
+      if(right.front()<left.front()){
+        merged.pushBack(right.front());
+        right.popFront();
+      }
+      else{
+        merged.pushBack(left.front());
+        left.popFront();
+      }
+    }
+    else{
+      if(!right.empty()){
+      merged.pushBack(right.front());
+      right.popFront();
+      }
+      if(!left.empty()){
+        merged.pushBack(left.front());
+        left.popFront();
+      }
+    }
+    
+  }
   // -----------------------------------------------------------
   // TODO: Your code here!
   // -----------------------------------------------------------
