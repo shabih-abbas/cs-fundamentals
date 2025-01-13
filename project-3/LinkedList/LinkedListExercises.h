@@ -81,6 +81,51 @@
 template <typename T>
 void LinkedList<T>::insertOrdered(const T& newData) {
 
+  const *Node newNode= new Node(newData);
+  
+  if(!head_){
+    head_=newNode;
+    tail_=newNode;
+  }
+  else{
+    if(newNode->data <= head_->data){
+      newNode->next=head_;
+      head_->prev=newNode;
+      head_=newNode;
+    }
+    else if(newNode->data >= tail_->data){
+      newNode->prev=tail_;
+      tail_->next=newNode;
+      tail_=newNode;
+    }
+    else{
+      const *Node frontptr= head_;
+      const *Node backptr= tail_;
+      while(frontptr && backptr){
+        if(newNode->data <= frontptr->data){
+          newNode->next=frontptr;
+          newNode->prev=frontptr->prev;
+          frontptr->prev=newNode;
+          size_++;
+          return;         
+        }
+        if(newNode->data >= backptr->data){
+          newNode->prev= backptr;
+          newNode->next= backptr->next;
+          backptr->next= newNode;
+          size_++;
+          return;         
+        }
+        frontptr= frontptr->next;
+        backptr= backptr->prev;
+
+        }
+      throw std::runtime_error() 
+      }
+    }
+    
+  }
+  
   // -----------------------------------------------------------
   // TODO: Your code here!
   // -----------------------------------------------------------

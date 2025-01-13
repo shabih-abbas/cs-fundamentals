@@ -2,6 +2,8 @@
 *.o
 *.d
 .objs/
+uiuc/
+tests/
 *submission*.zip
 *starter*zip
 #zephyr_output
