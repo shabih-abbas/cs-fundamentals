@@ -1,0 +1,8 @@
+*DS_Store
+.objs/
+tests/
+uiuc/
+*.o
+*.d
+main
+test
