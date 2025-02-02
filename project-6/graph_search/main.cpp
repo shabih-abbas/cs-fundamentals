@@ -81,7 +81,7 @@ void informalTests() {
 
   // The first-run welcome screen is meant to alert people that these
   // options exist.
-  constexpr bool showWelcome = true;
+  constexpr bool showWelcome = false;
   // You can view some demonstrations of the GridGraph class and read some
   // explanations. (See also the actual code in this file and the instructions PDF.)
   constexpr bool showDemonstrations = false;
@@ -105,7 +105,7 @@ void informalTests() {
   // When GridGraph plotting is not allowed, it instead try to describe the
   // contents of the large graphs verbosely. If that is also not desired,
   // then this can be set to false:
-  GridGraph::allowVerboseTextDescription = true;
+  GridGraph::allowVerboseTextDescription = false;
 
   // ---------------------------------------------------------------------
 
