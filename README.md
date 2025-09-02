@@ -4,7 +4,7 @@ This repository contains my solutions and projects completed as part of the
 **Accelerated Computer Science Fundamentals Specialization** offered by the University of Illinois on Coursera.  
 The specialization provides a rigorous introduction to core computer science concepts with a strong emphasis on **data structures, algorithms, and performance analysis**.
 
-📜 [View Certificate](https://coursera.org/share/3f3adebc27d33b5c7485e99f2a0ba628)
+📜 <a src="https://coursera.org/share/3f3adebc27d33b5c7485e99f2a0ba628" target="blank" rel="noopener noreferrer">View Certificate</a>
 
 ---
 
